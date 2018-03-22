@@ -22,30 +22,18 @@
 // THE SOFTWARE.
 
 public struct Reaction: Equatable {
+    public let count: Int?
     public let name: String?
-    public var user: String?
+    public let users: [String]?
 
     public init(reaction: [String: Any]?) {
+        count = reaction?["count"] as? Int
         name = reaction?["name"] as? String
-    }
-
-    public init(name: String, user: String) {
-        self.name = name
-        self.user = user
+        users = reaction?["users"] as? [String]
     }
 
     static func reactionsFromArray(_ array: [[String: Any]]?) -> [Reaction] {
-        var reactions = [Reaction]()
-        if let array = array {
-            for reaction in array {
-                if let users = reaction["users"] as? [String], let name = reaction["name"] as? String {
-                    for user in users {
-                        reactions.append(Reaction(name: name, user: user))
-                    }
-                }
-            }
-        }
-        return reactions
+        return array?.map({ Reaction(reaction: $0) }) ?? []
     }
 
     public static func == (lhs: Reaction, rhs: Reaction) -> Bool {
