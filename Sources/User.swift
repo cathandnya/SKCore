@@ -34,6 +34,8 @@ public struct User {
         public var image72: String?
         public var image192: String?
         public var customProfile: CustomProfile?
+        public var statusText: String?
+        public var statusEmoji: String?
 
         public init(profile: [String: Any]?) {
             firstName = profile?["first_name"] as? String
@@ -46,6 +48,8 @@ public struct User {
             image48 = profile?["image_48"] as? String
             image72 = profile?["image_72"] as? String
             image192 = profile?["image_192"] as? String
+            statusText = profile?["status_text"] as? String
+            statusEmoji = profile?["status_emoji"] as? String
             customProfile = CustomProfile(customFields: profile?["fields"] as? [String: Any])
         }
     }
