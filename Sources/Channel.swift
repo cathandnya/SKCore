@@ -27,6 +27,7 @@ public struct Channel {
     public let creator: String?
     public var name: String?
     public var isArchived: Bool?
+    public var isChannel: Bool?
     public var isGeneral: Bool?
     public let isGroup: Bool?
     public let isIM: Bool?
@@ -54,6 +55,7 @@ public struct Channel {
         created = channel?["created"] as? Int
         creator = channel?["creator"] as? String
         isArchived = channel?["is_archived"] as? Bool
+        isChannel = channel?["is_channel"] as? Bool
         isGeneral = channel?["is_general"] as? Bool
         isGroup = channel?["is_group"] as? Bool
         isIM = channel?["is_im"] as? Bool
